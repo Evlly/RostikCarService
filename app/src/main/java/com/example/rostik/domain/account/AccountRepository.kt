@@ -5,7 +5,7 @@ import com.example.rostik.domain.type.None
 import com.example.rostik.domain.type.exception.Failure
 
 interface AccountRepository {
-    fun login(email: String, password: String): Either<Failure, AccountEntity>
+    fun login(login: String, password: String): Either<Failure, AccountEntity>
     fun logout(): Either<Failure, None>
     fun register(F: String,
                  I: String,
