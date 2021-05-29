@@ -5,6 +5,6 @@ import com.example.rostik.domain.type.None
 import com.example.rostik.domain.type.exception.Failure
 
 interface AccountCache {
-    fun getUser(): Either<Failure, String>
-    fun saveUser(/*some fields*/): Either<Failure, None>
+    fun getUser(): Either<Failure, String?>
+    fun saveUser(id: String): Either<Failure, None>
 }
