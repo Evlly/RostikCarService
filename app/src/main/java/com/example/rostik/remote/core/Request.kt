@@ -33,3 +33,11 @@ class Request @Inject constructor(private val networkHandler: NetworkHandler) {
 fun <T : BaseResponse> Response<T>.isSucceed(): Boolean {
     return isSuccessful && body() != null && (body() as BaseResponse).success == 1
 }
+
+fun <T : BaseResponse> Response<T>.parseError(): Failure {
+    val message = (body() as BaseResponse).message
+    return when (message) {
+        "this name already exists" -> Failure.NameAlreadyExistError
+        else -> Failure.ServerError
+    }
+}
