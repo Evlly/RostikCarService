@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         accountCache.saveUser("0")
 
         val register = Register(accountRepository)
-        register(Register.Params("","","","","","","")) {
+        register(Register.Params("aba","aba","abab","caca","ds","ds","3232")) {
             it.either({
                 Toast.makeText(this, it.javaClass.simpleName, Toast.LENGTH_SHORT).show()
             }, {

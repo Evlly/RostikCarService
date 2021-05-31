@@ -1,4 +1,14 @@
 package com.example.rostik.domain.account
 
-class AccountEntity {
-}
+import com.google.gson.annotations.SerializedName
+
+class AccountEntity(
+    @SerializedName("user_id")
+    val id: Int,
+    val F: String,
+    val I: String,
+    val O: String,
+    val car: String,
+    val login: String,
+    val phone: String
+)

@@ -3,7 +3,7 @@ package com.example.rostik.domain.account
 import com.example.rostik.domain.interactor.UseCase
 import com.example.rostik.domain.type.Either
 import com.example.rostik.domain.type.None
-import com.example.rostik.domain.type.exception.Failure
+import com.example.rostik.domain.type.Failure
 import javax.inject.Inject
 
 class Register @Inject constructor(

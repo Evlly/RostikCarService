@@ -2,7 +2,7 @@ package com.example.rostik.domain.account
 
 import com.example.rostik.domain.type.Either
 import com.example.rostik.domain.type.None
-import com.example.rostik.domain.type.exception.Failure
+import com.example.rostik.domain.type.Failure
 
 interface AccountRepository {
     fun login(login: String, password: String): Either<Failure, AccountEntity>

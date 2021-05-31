@@ -7,6 +7,13 @@
     <string name="error_server">Ошибка сервера.</string>
     <string name="error_email_already_exist">Адрес электронной почты уже существует.</string>
     <string name="error_password_mismatch">Пароли не совпадают</string>
+    <string name="error_auth">Неправильный login или пароль.</string>
+
+    <string name="screen_login">Авторизация</string>
+    <string name="contracts">Заказы</string>
+    <string name="entry">Запись</string>
+    <string name="profile">Профиль</string>
+    <string name="info">Информация</string>
 
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
@@ -16,6 +23,7 @@
     <string name="O">Отчество</string>
     <string name="register">Регистрация</string>
     <string name="already_have_account">Уже есть аккаунт?</string>
+    <string name="dont_have_account">Нет аккаунта?</string>
     <string name="phone">Введите номер телефона</string>
     <string name="car">Автомобиль</string>
 </resources>

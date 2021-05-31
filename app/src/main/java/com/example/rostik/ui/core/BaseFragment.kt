@@ -1,4 +1,4 @@
-package com.example.rostik.ui.fragment
+package com.example.rostik.ui.core
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.rostik.R
-import com.example.rostik.domain.type.exception.Failure
-import com.example.rostik.ui.activity.BaseActivity
-import com.example.rostik.ui.activity.base
+import com.example.rostik.domain.type.Failure
+import com.example.rostik.ui.core.navigation.Navigator
 import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
@@ -25,6 +23,9 @@ abstract class BaseFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var navigator: Navigator
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,

@@ -3,7 +3,7 @@ package com.example.rostik.presentation.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.rostik.domain.type.HandleOnce
-import com.example.rostik.domain.type.exception.Failure
+import com.example.rostik.domain.type.Failure
 
 abstract class BaseViewModel : ViewModel() {
 

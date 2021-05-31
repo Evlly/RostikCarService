@@ -1,6 +1,6 @@
-package com.example.rostik.ui.activity
+package com.example.rostik.ui.register
 
-import com.example.rostik.ui.fragment.RegisterFragment
+import com.example.rostik.ui.core.BaseActivity
 
 class RegisterActivity : BaseActivity() {
 

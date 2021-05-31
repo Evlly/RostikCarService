@@ -1,12 +1,16 @@
 package com.example.rostik.remote.account
 
 import com.example.rostik.data.account.AccountRemote
+import com.example.rostik.domain.account.AccountEntity
 import com.example.rostik.domain.type.Either
 import com.example.rostik.domain.type.None
-import com.example.rostik.domain.type.exception.Failure
+import com.example.rostik.domain.type.Failure
 import com.example.rostik.remote.core.Request
 import com.example.rostik.remote.service.ApiService
+import com.google.gson.JsonObject
+import org.json.JSONObject
 import javax.inject.Inject
+import kotlin.math.log
 
 class AccountRemoteImpl @Inject constructor(
     private val request: Request,
@@ -22,7 +26,7 @@ class AccountRemoteImpl @Inject constructor(
         password: String,
         phone: String
     ): Either<Failure, None> {
-        return request.make(service.register(createRegisterMap(
+        return request.make(service.register(createRegisterObject(
             F,
             I,
             O,
@@ -34,7 +38,11 @@ class AccountRemoteImpl @Inject constructor(
             )) { None() }
     }
 
-    private fun createRegisterMap(
+    override fun login(login: String, password: String, id: String?): Either<Failure, AccountEntity> {
+        return request.make(service.login(createLoginObject(login, password))) { it.user }
+    }
+
+    private fun createRegisterObject(
         F: String,
         I: String,
         O: String,
@@ -42,15 +50,24 @@ class AccountRemoteImpl @Inject constructor(
         login: String,
         password: String,
         phone: String
-    ): Map<String, String> {
-        val map = HashMap<String, String>()
-        map.put(ApiService.PARAM_F, F)
-        map.put(ApiService.PARAM_I, I)
-        map.put(ApiService.PARAM_O, O)
-        map.put(ApiService.PARAM_CAR, car)
-        map.put(ApiService.PARAM_LOGIN, login)
-        map.put(ApiService.PARAM_PASSWORD, password)
-        map.put(ApiService.PARAM_PHONE, phone)
-        return map
+    ): JsonObject {
+
+        val jsonObject = JsonObject()
+        jsonObject.addProperty(ApiService.PARAM_F, F)
+        jsonObject.addProperty(ApiService.PARAM_I, I)
+        jsonObject.addProperty(ApiService.PARAM_O, O)
+        jsonObject.addProperty(ApiService.PARAM_CAR, car)
+        jsonObject.addProperty(ApiService.PARAM_LOGIN, login)
+        jsonObject.addProperty(ApiService.PARAM_PASSWORD, password)
+        jsonObject.addProperty(ApiService.PARAM_PHONE, phone)
+        return jsonObject
+    }
+
+    private fun createLoginObject(login: String, password: String): JsonObject {
+        val jsonObject = JsonObject()
+        jsonObject.addProperty(ApiService.PARAM_LOGIN, login)
+        jsonObject.addProperty(ApiService.PARAM_PASSWORD, password)
+
+        return jsonObject
     }
 }

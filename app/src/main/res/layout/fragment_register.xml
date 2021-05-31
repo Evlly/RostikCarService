@@ -116,7 +116,6 @@
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintTop_toBottomOf="@+id/etCar"
         tools:layout_editor_absoluteX="84dp"
-        whatever:testType="email"
         whatever:testErrorString="@string/error_email_address_not_valid"
         whatever:emptyErrorString="@string/error_field_must_not_be_empty"/>
 

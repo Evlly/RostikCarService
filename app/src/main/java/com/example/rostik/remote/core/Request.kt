@@ -1,7 +1,7 @@
 package com.example.rostik.remote.core
 
 import com.example.rostik.domain.type.Either
-import com.example.rostik.domain.type.exception.Failure
+import com.example.rostik.domain.type.Failure
 import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
@@ -37,7 +37,9 @@ fun <T : BaseResponse> Response<T>.isSucceed(): Boolean {
 fun <T : BaseResponse> Response<T>.parseError(): Failure {
     val message = (body() as BaseResponse).message
     return when (message) {
-        "this name already exists" -> Failure.NameAlreadyExistError
+        "email already exists" -> Failure.NameAlreadyExistError
+        "error in email or password" -> Failure.AuthError
+
         else -> Failure.ServerError
     }
 }

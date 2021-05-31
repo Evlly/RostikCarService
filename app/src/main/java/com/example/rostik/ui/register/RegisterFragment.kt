@@ -1,14 +1,16 @@
-package com.example.rostik.ui.fragment
+package com.example.rostik.ui.register
 
 import android.os.Bundle
 import android.view.View
 import com.example.rostik.R
 import com.example.rostik.databinding.FragmentRegisterBinding
+import com.example.rostik.domain.account.AccountEntity
 import com.example.rostik.domain.type.None
 import com.example.rostik.presentation.viewmodel.AccountViewModel
 import com.example.rostik.ui.App
-import com.example.rostik.ui.ext.onFailure
-import com.example.rostik.ui.ext.onSuccess
+import com.example.rostik.ui.core.BaseFragment
+import com.example.rostik.ui.core.ext.onFailure
+import com.example.rostik.ui.core.ext.onSuccess
 
 class RegisterFragment : BaseFragment() {
     override lateinit var layout: View
@@ -26,6 +28,7 @@ class RegisterFragment : BaseFragment() {
 
         accountViewModel = viewModel {
             onSuccess(registerData, ::handleRegister)
+            onSuccess(accountData, ::handleLogin)
             onFailure(failureData, ::handleFailure)
         }
     }
@@ -35,6 +38,9 @@ class RegisterFragment : BaseFragment() {
 
         binding.btnNewMembership.setOnClickListener {
             register()
+        }
+        binding.btnAlreadyHaveAkk.setOnClickListener {
+            activity?.finish()
         }
     }
 
@@ -72,19 +78,27 @@ class RegisterFragment : BaseFragment() {
             showProgress()
 
             accountViewModel.register(
-                binding.etF.toString(),
-                binding.etI.toString(),
-                binding.etO.toString(),
-                binding.etCar.toString(),
-                binding.etEmail.toString(),
-                binding.etPassword.toString(),
-                binding.etPhone.toString(),
+                binding.etF.text.toString(),
+                binding.etI.text.toString(),
+                binding.etO.text.toString(),
+                binding.etCar.text.toString(),
+                binding.etEmail.text.toString(),
+                binding.etPassword.text.toString(),
+                binding.etPhone.text.toString(),
             )
         }
     }
 
-    private fun handleRegister(none: None? = None()) {
+    private fun handleLogin(accountEntity: AccountEntity?) {
         hideProgress()
-        showMessage("Аккаунт создан")
+        activity?.let {
+            navigator.showHome(it)
+            it.finish()
+        }
+    }
+
+    private fun handleRegister(none: None? = None()) {
+        accountViewModel.login(binding.etEmail.text.toString(),
+            binding.etPassword.text.toString())
     }
 }

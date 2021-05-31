@@ -1,10 +1,10 @@
-package com.example.rostik.ui.ext
+package com.example.rostik.ui.core.ext
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.rostik.domain.type.HandleOnce
-import com.example.rostik.domain.type.exception.Failure
+import com.example.rostik.domain.type.Failure
 
 fun <T : Any, L : LiveData<T>> LifecycleOwner.onSuccess(liveData: L, body: (T?) -> Unit) =
     liveData.observe(this, Observer(body))

@@ -1,4 +1,4 @@
-package com.example.rostik.ui.activity
+package com.example.rostik.ui.core
 
 import android.app.Activity
 import android.os.Bundle
@@ -8,14 +8,14 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.rostik.R
-import com.example.rostik.domain.type.exception.Failure
+import com.example.rostik.domain.type.Failure
 import javax.inject.Inject
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModel
 import com.example.rostik.databinding.ActivityLayoutBinding
-import com.example.rostik.ui.fragment.BaseFragment
+import com.example.rostik.ui.core.navigation.Navigator
 
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -25,6 +25,11 @@ abstract class BaseActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var navigator: Navigator
+
+    open val contentId = R.layout.activity_layout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +75,7 @@ abstract class BaseActivity : AppCompatActivity() {
         when (failure) {
             is Failure.NetworkConnectionError -> showMessage(getString(R.string.error_network))
             is Failure.ServerError -> showMessage(getString(R.string.error_server))
+            is Failure.AuthError -> showMessage(getString(R.string.error_auth))
             is Failure.NameAlreadyExistError -> showMessage(getString(R.string.error_email_already_exist))
         }
     }

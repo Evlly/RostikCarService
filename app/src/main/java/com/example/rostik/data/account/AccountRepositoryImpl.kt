@@ -2,11 +2,7 @@ package com.example.rostik.data.account
 
 import com.example.rostik.domain.account.AccountEntity
 import com.example.rostik.domain.account.AccountRepository
-import com.example.rostik.domain.type.Either
-import com.example.rostik.domain.type.None
-import com.example.rostik.domain.type.exception.Failure
-import com.example.rostik.domain.type.flatMap
-import java.util.*
+import com.example.rostik.domain.type.*
 
 class AccountRepositoryImpl(
     private val accountRemote: AccountRemote,
@@ -14,11 +10,14 @@ class AccountRepositoryImpl(
 ) : AccountRepository {
 
     override fun login(login: String, password: String): Either<Failure, AccountEntity> {
-        throw UnsupportedOperationException("Login is not supported")
-    }
+        return accountCache.getUser().flatMap {
+            accountRemote.login(login, password, it)
+        }.onNext {
+            accountCache.saveAccount(it)
+        }  }
 
     override fun logout(): Either<Failure, None> {
-        throw UnsupportedOperationException("Logout is not supported")
+        return accountCache.logout()
     }
 
     override fun register(F: String,
@@ -36,7 +35,7 @@ class AccountRepositoryImpl(
 
 
     override fun getCurrentAccount(): Either<Failure, AccountEntity> {
-        throw UnsupportedOperationException("Get account is not supported")
+        return accountCache.getCurrentAccount()
     }
 
 

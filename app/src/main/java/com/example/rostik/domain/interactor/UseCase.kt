@@ -1,9 +1,8 @@
 package com.example.rostik.domain.interactor
 
 import com.example.rostik.domain.type.Either
-import com.example.rostik.domain.type.exception.Failure
+import com.example.rostik.domain.type.Failure
 import kotlinx.coroutines.*
-import kotlinx.coroutines.NonCancellable.cancel
 import kotlin.coroutines.CoroutineContext
 
 abstract class UseCase<out Type, in Params> {
