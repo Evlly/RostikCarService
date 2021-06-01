@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.rostik.presentation.Authenticator
 import com.example.rostik.ui.register.RegisterActivity
+import com.example.rostik.ui.home.HomeActivity
+import com.example.rostik.ui.login.LoginActivity
 import javax.inject.Inject
 import javax.inject.Singleton
 

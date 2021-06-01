@@ -10,6 +10,7 @@ import javax.inject.Inject
 class SharedPrefsManager @Inject constructor(private val prefs: SharedPreferences) {
     companion object {
         const val ACCOUNT_ID = "account_id"
+        const val ACCOUNT_IDS = "account_ids"
         const val ACCOUNT_F = "account_f"
         const val ACCOUNT_I = "account_i"
         const val ACCOUNT_O = "account_o"
@@ -20,14 +21,14 @@ class SharedPrefsManager @Inject constructor(private val prefs: SharedPreference
 
     fun saveId(id: String): Either<Failure, None> {
         prefs.edit().apply {
-            putString(ACCOUNT_ID, id)
+            putString(ACCOUNT_IDS, id)
         }.apply()
 
         return Either.Right(None())
     }
 
     fun getId(): Either.Right<String?> {
-        return Either.Right(prefs.getString(ACCOUNT_ID, ""))
+        return Either.Right(prefs.getString(ACCOUNT_IDS, ""))
     }
 
     fun saveAccount(account: AccountEntity): Either<Failure, None> {
