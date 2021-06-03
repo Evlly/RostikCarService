@@ -26,7 +26,7 @@ class AccountCacheImpl @Inject constructor(private val prefsManager: SharedPrefs
         return prefsManager.getAccount()
     }
 
-    override fun saveAccount(account: AccountEntity): Either<Failure, None> {
+    override fun saveAccount(account: AccountEntity?): Either<Failure, None> {
         return prefsManager.saveAccount(account)
     }
 }

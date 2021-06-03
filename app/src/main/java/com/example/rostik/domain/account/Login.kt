@@ -5,7 +5,7 @@ import javax.inject.Inject
 
 class Login @Inject constructor(
     private val accountRepository: AccountRepository
-) : UseCase<AccountEntity, Login.Params>() {
+) : UseCase<AccountEntity?, Login.Params>() {
 
     override suspend fun run(params: Params)
     = accountRepository.login(params.login, params.password)

@@ -30,7 +30,8 @@
         <activity android:name=".ui.register.RegisterActivity"/>
 
         <!--Home-->
-        <activity android:name=".ui.home.HomeActivity"/>
+        <activity android:name=".ui.home.HomeActivity"
+            android:exported="true"/>
 
     </application>
 

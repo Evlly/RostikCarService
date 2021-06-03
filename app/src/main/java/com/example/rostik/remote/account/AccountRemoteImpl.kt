@@ -39,7 +39,9 @@ class AccountRemoteImpl @Inject constructor(
     }
 
     override fun login(login: String, password: String, id: String?): Either<Failure, AccountEntity> {
-        return request.make(service.login(createLoginObject(login, password))) { it.user }
+        return request.make(service.login(createLoginObject(login, password))) {
+            it.user
+        }
     }
 
     private fun createRegisterObject(

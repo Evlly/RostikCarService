@@ -3,7 +3,6 @@ package com.example.rostik.domain.account
 import com.google.gson.annotations.SerializedName
 
 class AccountEntity(
-    @SerializedName("user_id")
     val id: Int,
     val F: String,
     val I: String,

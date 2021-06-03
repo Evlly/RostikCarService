@@ -42,7 +42,7 @@ class AccountViewModel @Inject constructor(
         logoutUseCase(None()) { it.either(::handleFailure, ::handleLogout) }
     }
 
-    private fun handleAccount(account: AccountEntity) {
+    private fun handleAccount(account: AccountEntity?) {
         this.accountData.value = account
     }
 
@@ -57,5 +57,8 @@ class AccountViewModel @Inject constructor(
     override fun onCleared() {
         super.onCleared()
         registerUseCase.unsubscribe()
+        loginUseCase.unsubscribe()
+        getAccountUseCase.unsubscribe()
+        logoutUseCase.unsubscribe()
     }
 }

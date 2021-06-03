@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_contracts"
-        android:name="com.example.rostik.ui.home.ContractsFragment"
+        android:name="com.example.rostik.ui.home.contracts.ContractsFragment"
         android:label="@string/contracts"
         tools:layout="@layout/fragment_contracts" />
 
     <fragment
         android:id="@+id/navigation_entry"
-        android:name="com.example.rostik.ui.home.ContractsFragment"
+        android:name="com.example.rostik.EntryFragment"
         android:label="@string/entry"
         tools:layout="@layout/fragment_entry" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.rostik.ui.home.ContractsFragment"
+        android:name="com.example.rostik.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_info"
-        android:name="com.example.rostik.ui.home.ContractsFragment"
+        android:name="com.example.rostik.InfoFragment"
         android:label="@string/info"
         tools:layout="@layout/fragment_info" />
 

@@ -10,6 +10,7 @@ import com.example.rostik.databinding.FragmentProfileBinding
 import com.example.rostik.domain.account.AccountEntity
 import com.example.rostik.domain.type.None
 import com.example.rostik.presentation.viewmodel.AccountViewModel
+import com.example.rostik.ui.App
 import com.example.rostik.ui.core.BaseFragment
 import com.example.rostik.ui.core.ext.onFailure
 import com.example.rostik.ui.core.ext.onSuccess
@@ -29,7 +30,7 @@ class ProfileFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         binding = FragmentProfileBinding.inflate(layoutInflater)
         layout = binding.root
-
+        App.appComponent.inject(this)
         accountViewModel = viewModel {
             onSuccess(accountData, ::handleAccount)
             onSuccess(logoutData, ::handleLogout)

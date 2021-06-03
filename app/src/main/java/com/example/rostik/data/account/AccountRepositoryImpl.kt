@@ -9,7 +9,7 @@ class AccountRepositoryImpl(
     private val accountCache: AccountCache
 ) : AccountRepository {
 
-    override fun login(login: String, password: String): Either<Failure, AccountEntity> {
+    override fun login(login: String, password: String): Either<Failure, AccountEntity?> {
         return accountCache.getUser().flatMap {
             accountRemote.login(login, password, it)
         }.onNext {

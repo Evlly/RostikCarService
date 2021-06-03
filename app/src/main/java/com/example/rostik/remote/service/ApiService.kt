@@ -5,16 +5,14 @@ import com.example.rostik.remote.core.BaseResponse
 import com.google.gson.JsonObject
 import org.json.JSONObject
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.FieldMap
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     companion object {
         //methods
         const val REGISTER = "register" //add path for register
         const val LOGIN = "login"
+        const val CONTRACTS = "contracts"
 
         //params
         const val PARAM_F = "F"
@@ -33,4 +31,7 @@ interface ApiService {
 
     @POST(LOGIN)
     fun login(@Body json: JsonObject): Call<AuthResponse>
+
+    @GET(CONTRACTS+"/{id}")
+    fun contracts(@Path("id") id: Int): Call<BaseResponse>
 }

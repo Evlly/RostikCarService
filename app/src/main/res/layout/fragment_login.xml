@@ -12,8 +12,6 @@
 
     <com.andreabaccega.widget.FormEditText
         android:id="@+id/etEmail"
-        whatever:testType="email"
-        whatever:testErrorString="@string/error_email_address_not_valid"
         whatever:emptyErrorString="@string/error_field_must_not_be_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +25,6 @@
         android:gravity="start|center_vertical"
         android:hint="@string/login"
         android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="@color/darkGrey"
         android:textColorHint="@android:color/darker_gray"

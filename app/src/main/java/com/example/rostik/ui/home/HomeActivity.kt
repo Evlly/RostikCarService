@@ -2,6 +2,9 @@ package com.example.rostik.ui.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -15,13 +18,15 @@ import com.example.rostik.ui.App
 import com.example.rostik.ui.core.BaseActivity
 import com.example.rostik.ui.core.ext.onFailure
 import com.example.rostik.ui.core.ext.onSuccess
+import javax.inject.Inject
 
-class HomeActivity : BaseActivity() {
+class HomeActivity : AppCompatActivity() {
 
-    override val fragment = ContractsFragment()
 
-    override val contentId = R.layout.activity_home
     private lateinit var binding: ActivityHomeBinding
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var accountViewModel: AccountViewModel
 
@@ -29,7 +34,7 @@ class HomeActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setSupportActionBar(binding.toolb.toolbar)
         App.appComponent.inject(this)
 
         val navController = findNavController(R.id.nav_host_fragment)
@@ -43,14 +48,19 @@ class HomeActivity : BaseActivity() {
         binding.navView.setupWithNavController(navController)
 
         accountViewModel = viewModel {
-            onFailure(failureData, ::handleFailure)
         }
         accountViewModel.getAccount()
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
     }
 
+
+    inline fun <reified T : ViewModel> viewModel(body: T.() -> Unit): T {
+        val vm = ViewModelProvider(this, viewModelFactory).get(T::class.java)
+        vm.body()
+        return vm
+    }
 
 
 

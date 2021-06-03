@@ -7,23 +7,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.rostik.databinding.FragmentInfoBinding
+import com.example.rostik.presentation.viewmodel.ViewModelFactory
 import com.example.rostik.ui.core.BaseFragment
 
-class InfoFragment : BaseFragment() {
+class InfoFragment : Fragment()
+{
 
     companion object {
         fun newInstance() = InfoFragment()
     }
-    override lateinit var layout: View
     private lateinit var binding: FragmentInfoBinding
 
-    private lateinit var infoViewModel: InfoViewModel
+    private var infoViewModel = InfoViewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentInfoBinding.inflate(layoutInflater)
-        layout = binding.root
-        infoViewModel = viewModel {  }
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

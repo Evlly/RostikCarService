@@ -16,5 +16,5 @@ interface AccountRemote {
         phone: String
     ): Either<Failure, None>
 
-    fun login(login: String, password: String, id: String?): Either<Failure, AccountEntity>
+    fun login(login: String, password: String, id: String?): Either<Failure, AccountEntity?>
 }
