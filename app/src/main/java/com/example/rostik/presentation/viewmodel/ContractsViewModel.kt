@@ -23,6 +23,14 @@ class ContractsViewModel @Inject constructor(
         }
     }
 
+    fun getContracts():List<ContractEntity>?{
+        if (contractsData.value!=null){
+            return contractsData.value
+        }
+        contracts()
+        return emptyList()
+    }
+
     fun handleContracts(list: List<ContractEntity>){
         this.contractsData.value = list
     }

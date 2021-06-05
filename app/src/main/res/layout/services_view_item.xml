@@ -17,16 +17,6 @@
         tools:layout_editor_absoluteX="107dp"
         tools:layout_editor_absoluteY="94dp" />
 
-    <TextView
-        android:id="@+id/tvServicesType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintEnd_toStartOf="@id/tvServicesCost"
-        app:layout_constraintStart_toEndOf="@id/tvServicesName"
-        app:layout_constraintTop_toTopOf="@id/tvServicesName"
-        tools:layout_editor_absoluteX="221dp"
-        tools:layout_editor_absoluteY="140dp" />
 
     <TextView
         android:id="@+id/tvServicesCost"
@@ -37,5 +27,6 @@
         app:layout_constraintTop_toTopOf="@id/tvServicesName"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteX="269dp"
+        android:textColor="@color/design_default_color_primary"
         tools:layout_editor_absoluteY="222dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

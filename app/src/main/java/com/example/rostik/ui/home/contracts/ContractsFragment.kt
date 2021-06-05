@@ -34,7 +34,8 @@ class ContractsFragment : BaseFragment() {
             onSuccess(contractsData, ::showContracts)
             onFailure(failureData, ::handleFailure)
         }
-        contracts()
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,10 +44,17 @@ class ContractsFragment : BaseFragment() {
             setHasFixedSize(true)
             layoutManager =LinearLayoutManager(context)
         }
+        if(contractsViewModel.getContracts()!!.isEmpty()){
+            contracts()
+        }
+        else{
+            contractsAdapter.add(contractsViewModel.getContracts()!!)
+            binding.contractsList.adapter = contractsAdapter
+        }
     }
 
     private fun showContracts(list: List<ContractEntity>?){
-        hideProgress()
+        binding.progressBar.visibility=View.INVISIBLE
         contractsAdapter.add(list!!)
         binding.contractsList.adapter = contractsAdapter
     }
@@ -54,7 +62,7 @@ class ContractsFragment : BaseFragment() {
 
 
     fun contracts(){
-        showProgress()
+        binding.progressBar.visibility=View.VISIBLE
         contractsViewModel.contracts()
     }
 }

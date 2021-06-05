@@ -44,7 +44,6 @@ class ProfileFragment : BaseFragment() {
         accountEntity?.let {
             binding.tvProfile1.text = "${it.F}\n${it.I}\n" +
                     "${it.O}"
-            binding.tvProfile2.text = it.login
             binding.tvProfile3.text = it.car
             binding.tvProfile4.text = it.phone
         }
