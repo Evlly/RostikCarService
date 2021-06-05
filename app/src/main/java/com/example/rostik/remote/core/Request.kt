@@ -10,14 +10,14 @@ import javax.inject.Singleton
 @Singleton
 class Request @Inject constructor(private val networkHandler: NetworkHandler) {
 
-    fun <T : BaseResponse, R> make(call: Call<T>, transform: (T) -> R): Either<Failure, R> {
+    fun <T : Any, R> make(call: Call<T>, transform: (T) -> R): Either<Failure, R> {
         return when (networkHandler.isConnected) {
             true -> execute(call, transform)
             false, null -> Either.Left(Failure.NetworkConnectionError)
         }
     }
 
-    private fun <T : BaseResponse, R> execute(call: Call<T>, transform: (T) -> R): Either<Failure, R> {
+    private fun <T : Any, R> execute(call: Call<T>, transform: (T) -> R): Either<Failure, R> {
         return try {
             val response = call.execute()
             when (response.isSucceed()) {
@@ -30,7 +30,7 @@ class Request @Inject constructor(private val networkHandler: NetworkHandler) {
     }
 }
 
-fun <T : BaseResponse> Response<T>.isSucceed(): Boolean {
+fun <T : Any> Response<T>.isSucceed(): Boolean {
     return isSuccessful && body() != null
 }
 

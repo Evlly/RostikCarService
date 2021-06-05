@@ -1,5 +1,7 @@
 package com.example.rostik.remote.service
 
+import com.example.rostik.domain.account.AccountEntity
+import com.example.rostik.domain.contracts.ContractEntity
 import com.example.rostik.remote.account.AuthResponse
 import com.example.rostik.remote.core.BaseResponse
 import com.google.gson.JsonObject
@@ -10,7 +12,7 @@ import retrofit2.http.*
 interface ApiService {
     companion object {
         //methods
-        const val REGISTER = "register" //add path for register
+        const val REGISTER = "register"
         const val LOGIN = "login"
         const val CONTRACTS = "contracts"
 
@@ -33,5 +35,5 @@ interface ApiService {
     fun login(@Body json: JsonObject): Call<AuthResponse>
 
     @GET(CONTRACTS+"/{id}")
-    fun contracts(@Path("id") id: Int): Call<BaseResponse>
+    fun contracts(@Path("id") id: Int): Call<List<ContractEntity>>
 }

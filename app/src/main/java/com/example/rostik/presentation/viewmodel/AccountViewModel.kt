@@ -17,6 +17,7 @@ class AccountViewModel @Inject constructor(
 
     var accountData: MutableLiveData<AccountEntity> = MutableLiveData()
     var logoutData: MutableLiveData<None> = MutableLiveData()
+
     fun register(F: String,
                  I: String,
                  O: String,

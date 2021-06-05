@@ -62,6 +62,7 @@ class LoginFragment : BaseFragment() {
         accountViewModel.login(email, password)
     }
 
+
     private fun renderAccount(account: AccountEntity?) {
         hideProgress()
         activity?.let {
@@ -69,4 +70,5 @@ class LoginFragment : BaseFragment() {
             it.finish()
         }
     }
+
 }

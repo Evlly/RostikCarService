@@ -65,6 +65,9 @@ class SharedPrefsManager @Inject constructor(private val prefs: SharedPreference
         return Either.Right(account)
     }
 
+    fun getIdInt():Int= prefs.getInt(ACCOUNT_ID, 0)
+
+
     fun removeAccount(): Either<Failure, None> {
         prefs.edit().apply {
             remove(ACCOUNT_ID)
