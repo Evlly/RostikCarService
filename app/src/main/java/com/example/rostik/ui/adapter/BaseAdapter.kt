@@ -2,6 +2,7 @@ package com.example.rostik.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.rostik.domain.contracts.ServiceEntity
 
 abstract class BaseAdapter<VH: BaseAdapter.BaseViewHolder>: RecyclerView.Adapter<VH>() {
 
@@ -19,12 +20,18 @@ abstract class BaseAdapter<VH: BaseAdapter.BaseViewHolder>: RecyclerView.Adapter
         return items.size
     }
 
+
     fun add(newItem: Any){
         items.add(newItem)
     }
 
     fun add(newItems: List<Any>){
         items.addAll(newItems)
+    }
+
+    fun filterList (filteredList: List<Any>){
+        items = filteredList as ArrayList<Any>
+        notifyDataSetChanged()
     }
 
     abstract class BaseViewHolder(protected val view: View) : RecyclerView.ViewHolder(view){

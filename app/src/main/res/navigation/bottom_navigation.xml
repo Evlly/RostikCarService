@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_entry"
-        android:name="com.example.rostik.EntryFragment"
+        android:name="com.example.rostik.ui.home.contracts.EntryFragment"
         android:label="@string/entry"
         tools:layout="@layout/fragment_entry" />
 

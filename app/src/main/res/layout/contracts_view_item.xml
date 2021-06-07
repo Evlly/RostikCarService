@@ -117,10 +117,10 @@
         android:layout_width="0dp"
         android:id="@+id/recyclerServicesContracts"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tvContractsMechanicCap"
+        app:layout_constraintStart_toStartOf="@id/tvContractsMechanicCap"
         app:layout_constraintTop_toBottomOf="@id/tvContractsMechanicCap"
         android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toStartOf="@id/tvContractsDateFinish">
+        app:layout_constraintEnd_toEndOf="@id/tvContractsDateFinish">
     </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

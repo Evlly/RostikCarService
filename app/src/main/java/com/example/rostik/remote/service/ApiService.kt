@@ -2,6 +2,7 @@ package com.example.rostik.remote.service
 
 import com.example.rostik.domain.account.AccountEntity
 import com.example.rostik.domain.contracts.ContractEntity
+import com.example.rostik.domain.contracts.ServiceEntity
 import com.example.rostik.remote.account.AuthResponse
 import com.example.rostik.remote.core.BaseResponse
 import com.google.gson.JsonObject
@@ -15,6 +16,7 @@ interface ApiService {
         const val REGISTER = "register"
         const val LOGIN = "login"
         const val CONTRACTS = "contracts"
+        const val SERVICES = "all_services"
 
         //params
         const val PARAM_F = "F"
@@ -36,4 +38,7 @@ interface ApiService {
 
     @GET(CONTRACTS+"/{id}")
     fun contracts(@Path("id") id: Int): Call<List<ContractEntity>>
+
+    @GET(SERVICES)
+    fun services(): Call<List<ServiceEntity>>
 }

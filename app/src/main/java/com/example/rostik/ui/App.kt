@@ -9,6 +9,7 @@ import com.example.rostik.presentation.injection.ViewModelModule
 import com.example.rostik.ui.core.navigation.RouteActivity
 import com.example.rostik.ui.home.contracts.ContractsFragment
 import com.example.rostik.ui.home.HomeActivity
+import com.example.rostik.ui.home.contracts.EntryFragment
 import com.example.rostik.ui.login.LoginFragment
 import com.example.rostik.ui.register.RegisterActivity
 import com.example.rostik.ui.register.RegisterFragment
@@ -48,6 +49,7 @@ interface AppComponent {
     fun inject(fragment: LoginFragment)
     fun inject(fragment: ContractsFragment)
     fun inject(fragment: ProfileFragment)
+    fun inject(fragment: EntryFragment)
 
 
 

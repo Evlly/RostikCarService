@@ -31,7 +31,7 @@ class ServicesAdapter: BaseAdapter<ServicesAdapter.ServicesViewHolder>() {
             let {
                 item as ServiceEntity
                 binding.tvServicesName.text = item.name
-                binding.tvServicesCost.text = item.cost.toString()
+                binding.tvServicesCost.text = item.cost.toString() + " руб."
             }
         }
     }
