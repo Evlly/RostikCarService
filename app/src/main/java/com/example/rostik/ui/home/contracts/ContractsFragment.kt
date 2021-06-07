@@ -47,16 +47,12 @@ class ContractsFragment : BaseFragment() {
         if(contractsViewModel.getContracts()!!.isEmpty()){
             contracts()
         }
-        else{
-            contractsAdapter.add(contractsViewModel.getContracts()!!)
-            binding.contractsList.adapter = contractsAdapter
-        }
+        binding.contractsList.adapter = contractsAdapter
     }
 
     private fun showContracts(list: List<ContractEntity>?){
         binding.progressBar.visibility=View.INVISIBLE
         contractsAdapter.add(list!!)
-        binding.contractsList.adapter = contractsAdapter
     }
 
 

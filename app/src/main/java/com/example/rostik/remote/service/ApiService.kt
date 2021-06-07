@@ -4,6 +4,7 @@ import com.example.rostik.domain.account.AccountEntity
 import com.example.rostik.domain.contracts.ContractEntity
 import com.example.rostik.domain.contracts.ServiceEntity
 import com.example.rostik.remote.account.AuthResponse
+import com.example.rostik.remote.contracts.ContractsResponse
 import com.example.rostik.remote.core.BaseResponse
 import com.google.gson.JsonObject
 import org.json.JSONObject
@@ -38,6 +39,9 @@ interface ApiService {
 
     @GET(CONTRACTS+"/{id}")
     fun contracts(@Path("id") id: Int): Call<List<ContractEntity>>
+
+    @POST(CONTRACTS)
+    fun postServices(@Body json: JsonObject): Call<ContractsResponse>
 
     @GET(SERVICES)
     fun services(): Call<List<ServiceEntity>>

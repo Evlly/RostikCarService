@@ -2,10 +2,7 @@ package com.example.rostik.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.example.rostik.cache.SharedPrefsManager
-import com.example.rostik.domain.contracts.ContractEntity
-import com.example.rostik.domain.contracts.Contracts
-import com.example.rostik.domain.contracts.ServiceEntity
-import com.example.rostik.domain.contracts.Services
+import com.example.rostik.domain.contracts.*
 import com.example.rostik.domain.type.None
 import com.example.rostik.presentation.viewmodel.BaseViewModel
 import javax.inject.Inject
@@ -13,6 +10,7 @@ import javax.inject.Inject
 class ContractsViewModel @Inject constructor(
     val contractsUseCase: Contracts,
     val servicesUseCase: Services,
+    val postServicesUseCase: PostServices,
     private val sharedPrefsManager: SharedPrefsManager
 )  : BaseViewModel() {
 
@@ -69,7 +67,13 @@ class ContractsViewModel @Inject constructor(
         servicesUseCase.unsubscribe()
     }
 
-    fun postServices(){
+    fun postServices(date_start: String, id_price: ArrayList<Int>){
+        postServicesUseCase(PostServices.Params(id, date_start, id_price)){
+            it.either(::handleFailure, ::handlePost)
+        }
+    }
 
+    fun handlePost(none: None){
+        this.postServicesData.value = none
     }
 }

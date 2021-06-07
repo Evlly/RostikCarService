@@ -27,7 +27,10 @@ abstract class BaseAdapter<VH: BaseAdapter.BaseViewHolder>: RecyclerView.Adapter
 
     fun add(newItems: List<Any>){
         items.addAll(newItems)
+        notifyDataSetChanged()
     }
+
+    fun getList() = items
 
     fun filterList (filteredList: List<Any>){
         items = filteredList as ArrayList<Any>
